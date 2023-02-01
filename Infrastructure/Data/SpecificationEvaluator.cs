@@ -16,7 +16,11 @@ namespace Infrastructure.Data
             }
 
             query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
-
+            query = spec.IncludeStrings.Aggregate(query, (current, include) => current.Include(include));
+            //Usage Example
+            //AddInclude(c => c.CountryOfBirth);
+            //AddInclude(“CountyOfOrigin.DefaultCountryLanguage”);
+            
             return query;
         }
     }
